@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<title>Alan Turing Library Management System</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body, h1, h2, h3, h4, h5, h6 {
+        background-color: rgba(76, 217, 230, 0.09);
+        margin: 50px 50px 20px 80px;
+        font-family: "Raleway", Arial, Helvetica, sans-serif
+    }
+
+    h1 {
+        margin: 50px 50px 20px 400px;
+    }
+
+    div {
+        margin: 50px 50px 20px 400px;
+    }
+
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #3bdddb;
+    }
+
+    {#    tr:nth-child(odd) {#}
+    {#        background-color: #3658dd;#}
+    {#    }#}
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        width: 91.2%;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 20px 20px;
+        text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+
+    .active {
+        background-color: #25aeaf;
+    }
+</style>
+<img src="https://csuglobal.edu/application/files/5214/7983/9200/header_studentLife_library.jpg" alt="lib"
+     style="width:1400px;height:250px;">
+<body>
+<ul>
+    <li><a class="active" href={% url 'customsearch' %}>Search Books</a></li>
+    <li><a href="http://127.0.0.1:8000/admin/mylibrary/borrower/add/">Add Borrowers</a></li>
+    <li><a href={% url 'bsearch' %}>Check in By Borrower's details</a></li>
+    <li><a href={% url 'fines' %}>Run Fines</a></li>
+    <li><a href={% url 'payfine' %}>Pay Fines</a></li>
+</ul>
+<h1>Alan Turing Library</h1>
+{% block content %}{% endblock %}
+</body>
+</html>

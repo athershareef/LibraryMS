@@ -1,0 +1,34 @@
+{% extends 'basic/base.html' %}
+{#{% load render_table from django_tables2 %}#}
+{% load custom_tags %}
+
+{% block content %}
+    <form action="{% url 'bsearch' %}" method="POST" class="form-signin" role="form">{% csrf_token %}
+        <label for="team_name" style="text-align: center">Please Enter the Borrower details / ISBN</label>
+        <input type="text" name="search_key" placeholder="Borrower's Search.." size="60" value="{{ last_phrase }}">
+        <input type="submit" value="Search Now">
+    </form>
+    {% if data %}
+        <table>
+            <tr>
+                <th>Borrower</th>
+                <th>Card ID</th>
+                <th>ISBN (s)</th>
+                <th>Check In</th>
+            </tr>
+            {% for row in data %}
+                <tr>
+                    {% for each in row %}
+                        <td>{{ each }}</td>
+                    {% endfor %}
+                    <td><a href="http://127.0.0.1:8000/admin/mylibrary/bookloans/{% getb loandict row %}">Checked
+                        out, click to check in</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% elif last_phrase %}
+        <div>No results Found</div>
+
+    {% endif %}
+
+{% endblock %}

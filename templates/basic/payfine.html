@@ -1,0 +1,33 @@
+{% extends 'basic/base.html' %}
+{#{% load render_table from django_tables2 %}#}
+{% load custom_tags %}
+
+{% block content %}
+    {% if data %}
+        <table>
+            <tr>
+                <th>Card ID</th>
+                <th>Loan ID</th>
+                <th>Total Sum of Fines</th>
+                <th>Paid?</th>
+                <th>Click to pay (Enables only if book is checked In)</th>
+            </tr>
+            {% for row in data %}
+                <tr>
+                    {% for each in row %}
+                        {% if each == "pay" %}
+                            <td><a href="http://127.0.0.1:8000/admin/mylibrary/fines/{% getp row.1 %} ">Pay Fine Now</a>
+                            </td>
+                        {% else %}
+                            <td>{{ each }}</td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    {% elif last_phrase %}
+        <div>No results Found</div>
+
+    {% endif %}
+
+{% endblock %}
